@@ -16,7 +16,17 @@ class ListaTransacoesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_transacoes)
 
-        val transacoes = listOf(Transacao(
+        val transacoes: List<Transacao> = transacoesDeExemplo()
+
+        configuraLista(transacoes)
+    }
+
+    private fun configuraLista(transacoes: List<Transacao>) {
+        lista_transacoes_listview.adapter = ListaTransacoesAdapter(transacoes, this)
+    }
+
+    private fun transacoesDeExemplo(): List<Transacao> {
+        return listOf(Transacao(
                 valor = BigDecimal(20.5),
                 tipo = Tipo.DESPESA,
                 data = Calendar.getInstance()),
@@ -26,9 +36,6 @@ class ListaTransacoesActivity : AppCompatActivity() {
                 Transacao(BigDecimal(200.0),
                         tipo = Tipo.DESPESA),
                 Transacao(BigDecimal(500.0),
-                        categoria= "Premio", tipo = Tipo.RECEITA))
-
-        lista_transacoes_listview.adapter = ListaTransacoesAdapter(transacoes, this)
-
+                        categoria = "Premio", tipo = Tipo.RECEITA))
     }
 }

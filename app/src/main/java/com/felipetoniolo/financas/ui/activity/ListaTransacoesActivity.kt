@@ -3,6 +3,7 @@ package com.felipetoniolo.financas.ui.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.felipetoniolo.financas.R
+import com.felipetoniolo.financas.model.Tipo
 import com.felipetoniolo.financas.model.Transacao
 import com.felipetoniolo.financas.ui.adapter.ListaTransacoesAdapter
 import kotlinx.android.synthetic.main.activity_lista_transacoes.*
@@ -15,12 +16,19 @@ class ListaTransacoesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_transacoes)
 
-        val transacoes = listOf(Transacao(BigDecimal(20.5),
-                "Comida", Calendar.getInstance()),
-                Transacao(BigDecimal(100.0),"Economia", Calendar.getInstance()))
+        val transacoes = listOf(Transacao(
+                valor = BigDecimal(20.5),
+                tipo = Tipo.DESPESA,
+                data = Calendar.getInstance()),
+                Transacao(valor = BigDecimal(100.0),
+                        categoria = "Economia",
+                        tipo = Tipo.RECEITA),
+                Transacao(BigDecimal(200.0),
+                        tipo = Tipo.DESPESA),
+                Transacao(BigDecimal(500.0),
+                        categoria= "Premio", tipo = Tipo.RECEITA))
 
-        lista_transacoes_listview.setAdapter(
-                ListaTransacoesAdapter(transacoes, this))
+        lista_transacoes_listview.adapter = ListaTransacoesAdapter(transacoes, this)
 
     }
 }

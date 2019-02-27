@@ -12,7 +12,7 @@ class TransactionsListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_transacoes)
 
-        val transacoes = listOf("Comida - R$20,50", "Economia - R$100,00")
+        val transacoes = listOf(Trans)
 
         lista_transacoes_listview.setAdapter(TransactionsListAdapter(transacoes, this))
 

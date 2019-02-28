@@ -49,8 +49,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_top_right_white_24dp"
             fab:fab_colorNormal="@color/receita"
-            fab:fab_colorPressed="#2945fc"
-            fab:fab_colorRipple="#3216e2"
+            fab:fab_colorPressed="#08f951"
+            fab:fab_colorRipple="#fd1f8101"
             fab:fab_label="@string/adiciona_receita"
             fab:fab_size="mini" />
 

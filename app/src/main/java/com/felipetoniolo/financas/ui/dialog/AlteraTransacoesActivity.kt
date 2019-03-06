@@ -1,4 +1,4 @@
-package com.felipetoniolo.financas.ui.activity
+package com.felipetoniolo.financas.ui.dialog
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -10,10 +10,9 @@ import com.felipetoniolo.financas.model.Tipo
 import com.felipetoniolo.financas.model.Transacao
 import com.felipetoniolo.financas.ui.ResumoView
 import com.felipetoniolo.financas.ui.adapter.ListaTransacoesAdapter
-import com.felipetoniolo.financas.ui.dialog.AdicionaTransacaoDialog
 import kotlinx.android.synthetic.main.activity_lista_transacoes.*
 
-class ListaTransacoesActivity : AppCompatActivity() {
+class AlteraTransacoesActivity : AppCompatActivity() {
 
     private val transacoes: MutableList<Transacao> = mutableListOf()
 

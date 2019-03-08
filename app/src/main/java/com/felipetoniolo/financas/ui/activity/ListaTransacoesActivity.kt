@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
 import com.felipetoniolo.financas.R
-import com.felipetoniolo.financas.delegate.TransacaoDelegate
 import com.felipetoniolo.financas.model.Tipo
 import com.felipetoniolo.financas.model.Transacao
 import com.felipetoniolo.financas.ui.ResumoView
@@ -32,11 +31,12 @@ class ListaTransacoesActivity : AppCompatActivity() {
         configuraResumo()
         configuraLista()
         configuraFab()
+
     }
 
     private fun configuraFab() {
         lista_transacoes_adiciona_receita
-                .setOnClickListener {
+                .setOnClickListener { transacaoAlterada ->
                     chamaDialogDeAdicao(Tipo.RECEITA)
                 }
 
@@ -48,11 +48,10 @@ class ListaTransacoesActivity : AppCompatActivity() {
 
     private fun chamaDialogDeAdicao(tipo: Tipo) {
         AdicionaTransacaoDialog(viewGroupDaActivity, this)
-                .chama(tipo, object : TransacaoDelegate {
-                    override fun delegate(transacao: Transacao) {
-                        adiciona(transacao)
-                        lista_transacoes_adiciona_menu.close(true)
-                    }
+                .chama(tipo, { transacaoCriada ->
+                    adiciona(transacaoCriada)
+                    lista_transacoes_adiciona_menu.close(true)
+
                 })
     }
 
@@ -83,10 +82,9 @@ class ListaTransacoesActivity : AppCompatActivity() {
 
     private fun chamaDialogDeAlteracao(transacao: Transacao, posicao: Int) {
         AlteraTransacaoDialog(viewGroupDaActivity, this)
-                .chama(transacao, object : TransacaoDelegate {
-                    override fun delegate(transacao: Transacao) {
-                        altera(transacao, posicao)
-                    }
+                .chama(transacao,{ transacaoAlterada ->
+                        altera(transacaoAlterada, posicao)
+
                 })
     }
 
